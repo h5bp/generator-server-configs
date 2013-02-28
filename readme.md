@@ -2,6 +2,8 @@
 
 Scaffolds out [webserver configuration](https://github.com/h5bp/server-configs) for various platforms. Goes well with HTML5 Boilerplate.
 
+![screenshot](screenshot.png)
+
 
 ## Getting started
 
