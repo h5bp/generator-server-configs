@@ -1,0 +1,43 @@
+{
+  "name": "generator-server-configs",
+  "version": "0.1.0",
+  "description": "Scaffolds out webserver configuration for various platforms. Goes well with HTML5 Boilerplate.",
+  "keywords": [
+    "yeoman-generator",
+    "html",
+    "boilerplate",
+    "template",
+    "server",
+    "config"
+  ],
+  "homepage": "https://github.com/sindresorhus/generator-server-configs",
+  "bugs": "https://github.com/sindresorhus/generator-server-configs/issues",
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "http://sindresorhus.com"
+  },
+  "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sindresorhus/generator-server-configs.git"
+  },
+  "scripts": {
+    "test": "mocha test/test-*.js"
+  },
+  "dependencies": {
+    "yeoman-generator": "~0.10.2",
+    "commander": "~1.1.1"
+  },
+  "devDependencies": {
+    "mocha": "~1.8.1"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ]
+}
