@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "yeoman-generator": "~0.10.2",
-    "commander": "~1.1.1"
+    "commander": "xingrz/commander.js#bugfix-stdin"
   },
   "devDependencies": {
     "mocha": "~1.8.1"
