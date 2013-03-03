@@ -11,6 +11,9 @@ Scaffolds out [webserver configuration](https://github.com/h5bp/server-configs) 
 - Install the generator locally: `npm install generator-server-configs`
 - Run: `yo server-configs`
 
+You can bypass the prompt by specifying the config directly: `yo server-configs node`  
+Possible arguments: node, apache, nginx, lighttpd, gae, iis
+
 
 ## License
 
