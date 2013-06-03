@@ -1,4 +1,4 @@
-# H5BP Server Configs generator [![Build Status](https://secure.travis-ci.org/sindresorhus/generator-server-configs.png?branch=master)](http://travis-ci.org/sindresorhus/generator-server-configs)
+# H5BP Server Configs generator [![Build Status](https://secure.travis-ci.org/h5bp/generator-server-configs.png?branch=master)](http://travis-ci.org/h5bp/generator-server-configs)
 
 Scaffolds out [webserver configuration](https://github.com/h5bp/server-configs) for various platforms. Goes well with HTML5 Boilerplate.
 
