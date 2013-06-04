@@ -17,5 +17,4 @@ Possible arguments: node, apache, nginx, lighttpd, gae, iis
 
 ## License
 
-[MIT License](http://en.wikipedia.org/wiki/MIT_License)
-(c) [Sindre Sorhus](http://sindresorhus.com)
+MIT License • © [Sindre Sorhus](http://sindresorhus.com)
