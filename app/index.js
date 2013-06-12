@@ -1,6 +1,5 @@
 'use strict';
 var path = require('path');
-var program = require('commander');
 
 var Generator = module.exports = function (arg) {
 	var cb = this.async();
@@ -27,10 +26,13 @@ var Generator = module.exports = function (arg) {
 	if (configs.indexOf(arg) !== -1) {
 		fetch(arg);
 	} else {
-		console.log('Which server config do you want?');
-
-		program.choose(choices, function (i) {
-			fetch(configs[i]);
+		this.prompt([{
+			type: 'list',
+			name: 'config',
+			message: 'Which server config do you want?',
+			choices: choices
+		}], function (props) {
+			fetch(configs[choices.indexOf(props.config)]);
 		});
 	}
 };

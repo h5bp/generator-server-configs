@@ -26,8 +26,7 @@
     "test": "mocha --timeout 50000"
   },
   "dependencies": {
-    "yeoman-generator": "~0.11.2",
-    "commander": "xingrz/commander.js#bugfix-stdin"
+    "yeoman-generator": "~0.12.0"
   },
   "devDependencies": {
     "mocha": "~1.9.0"
