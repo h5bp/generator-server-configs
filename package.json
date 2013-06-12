@@ -1,6 +1,6 @@
 {
   "name": "generator-server-configs",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Scaffolds out webserver configuration for various platforms. Goes well with HTML5 Boilerplate.",
   "keywords": [
     "yeoman-generator",
