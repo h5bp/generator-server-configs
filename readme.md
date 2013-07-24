@@ -7,9 +7,8 @@ Scaffolds out [webserver configuration](https://github.com/h5bp/server-configs) 
 
 ## Getting started
 
-- Make sure you have [yo](https://github.com/yeoman/yo) installed: `npm install -g yo`
-- Install the generator: `npm install -g generator-server-configs`
-- Run: `yo server-configs`
+- Install: `npm install -g generator-server-configs`
+- Run it with [yo](https://github.com/yeoman/yo): `yo server-configs`
 
 You can bypass the prompt by specifying the config directly: `yo server-configs node`  
 Possible arguments: node, apache, nginx, lighttpd, gae, iis
