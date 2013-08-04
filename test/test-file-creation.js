@@ -1,9 +1,10 @@
-/*global describe beforeEach it */
 'use strict';
+
 var path = require('path');
 var helpers = require('yeoman-generator').test;
 
 describe('H5BP Server Configs generator', function () {
+
 	beforeEach(function (cb) {
 		var deps = ['../../app'];
 
@@ -17,8 +18,53 @@ describe('H5BP Server Configs generator', function () {
 		}.bind(this));
 	});
 
-	it('`node` options generates expected files', function (cb) {
-		var expected = ['package.json'];
+	it('`apache` option generates expected files', function (cb) {
+		var expected = [ '.htaccess' ];
+
+		this.generator.run(['apache'], function () {
+			helpers.assertFiles(expected);
+			cb();
+		});
+	});
+
+	it('`gae` option generates expected files', function (cb) {
+		var expected = [ 'app.yaml', 'gae.py' ];
+
+		this.generator.run(['gae'], function () {
+			helpers.assertFiles(expected);
+			cb();
+		});
+	});
+
+	it('`iis` option generates expected files', function (cb) {
+		var expected = [ 'dotnet 3', 'dotnet 4' ];
+
+		this.generator.run(['iis'], function () {
+			helpers.assertFiles(expected);
+			cb();
+		});
+	});
+
+	it('`lighttpd` option generates expected files', function (cb) {
+		var expected = [ 'lighttpd.conf' ];
+
+		this.generator.run(['lighttpd'], function () {
+			helpers.assertFiles(expected);
+			cb();
+		});
+	});
+
+	it('`nginx` option generates expected files', function (cb) {
+		var expected = [ 'conf', 'mime.types', 'nginx.conf', 'sites-available', 'sites-enabled' ];
+
+		this.generator.run(['nginx'], function () {
+			helpers.assertFiles(expected);
+			cb();
+		});
+	});
+
+	it('`node` option generates expected files', function (cb) {
+		var expected = [ 'lib', 'package.json' ];
 
 		this.generator.run(['node'], function () {
 			helpers.assertFiles(expected);
@@ -26,12 +72,4 @@ describe('H5BP Server Configs generator', function () {
 		});
 	});
 
-	it('`apache` options generates expected files', function (cb) {
-		var expected = ['.htaccess'];
-
-		this.generator.run(['apache'], function () {
-			helpers.assertFiles(expected);
-			cb();
-		});
-	});
 });
