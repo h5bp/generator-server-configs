@@ -1,12 +1,21 @@
 'use strict';
 
-var path = require('path');
 var fs = require('fs');
+var path = require('path');
+var util = require('util');
 
-var Generator = module.exports = function (arg) {
+var yeoman = require('yeoman-generator');
 
-	var cb = this.async(),
-        choices = [
+var Generator = module.exports = function Generator () {
+    yeoman.generators.Base.apply(this, arguments);
+};
+
+util.inherits(Generator, yeoman.generators.NamedBase);
+
+Generator.prototype.copyFiles = function (arg) {
+
+    var cb = this.async();
+    var choices = [
             {
                 name: 'Apache',
                 value: {
@@ -49,8 +58,9 @@ var Generator = module.exports = function (arg) {
                     'url': 'https://github.com/h5bp/server-configs-node/archive/master.tar.gz'
                 }
             }
-        ],
-        ignores = [
+    ];
+
+    var ignores = [
             '.git',
             '.gitattributes',
             '.gitignores',
@@ -62,7 +72,7 @@ var Generator = module.exports = function (arg) {
             'LICENSE.md',
             'test',
             'README.md'
-        ];
+    ];
 
     var fetch = function (configs) {
 
