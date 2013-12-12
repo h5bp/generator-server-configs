@@ -55,7 +55,7 @@ describe('H5BP Server Configs generator', function () {
 	});
 
 	it('`nginx` option generates expected files', function (cb) {
-		var expected = [ 'conf', 'mime.types', 'nginx.conf', 'sites-available', 'sites-enabled' ];
+		var expected = [ 'h5bp', 'mime.types', 'nginx.conf', 'sites-available', 'sites-enabled' ];
 
 		this.generator.run(['nginx'], function () {
 			helpers.assertFiles(expected);
