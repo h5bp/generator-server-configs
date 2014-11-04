@@ -19,7 +19,7 @@ describe('H5BP Server Configs generator', function () {
 	});
 
 	it('`apache` option generates expected files', function (cb) {
-		var expected = [ path.join('dist', '.htaccess') ];
+		var expected = [ path.join('.htaccess') ];
 
 		this.generator.run(['apache'], function () {
 			helpers.assertFiles(expected);

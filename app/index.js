@@ -61,41 +61,55 @@ Generator.prototype.copyFiles = function (arg) {
     ];
 
     var ignores = [
+            '.editorconfig',
             '.git',
             '.gitattributes',
-            '.gitignores',
+            '.gitignore',
             '.jshintrc',
-            '.travis',
+            '.travis.yml',
             'CHANGELOG.md',
             'CONTRIBUTING.md',
-            'doc',
             'LICENSE.md',
-            'test',
-            'README.md'
+            'README.md',
+            'bin',
+            'bower.json',
+            'doc',
+            'src',
+            'test'
     ];
 
     var fetch = function (configs) {
 
         var configsPath = path.join(this.sourceRoot(), configs.server);
 
+        // Only the `node` server configs require the `package.json` file
+        if (configs.server !== 'node' ) {
+            ignores.push('package.json');
+        }
+
         this.tarball(configs.url, configsPath, function () {
 
-            this.expand('*', {
-                cwd: configsPath,
-                dot: true
-            }).forEach(function (elem) {
+            if (configs.server == "apache" ) {
+                this.copy(path.join(configsPath, 'dist', '.htaccess'), '.htaccess');
 
-                var tmplPath = path.join(configs.server, elem);
+            } else {
+                this.expand('*', {
+                    cwd: configsPath,
+                    dot: true
+                }).forEach(function (elem) {
 
-                if ( ignores.indexOf(elem) === -1 ) {
-                    if ( fs.lstatSync(path.join(configsPath, elem)).isDirectory() === true ) {
-                        this.directory(tmplPath, elem);
-                    } else {
-                        this.copy(tmplPath, elem);
+                    var tmplPath = path.join(configs.server, elem);
+
+                    if ( ignores.indexOf(elem) === -1 ) {
+                        if ( fs.lstatSync(path.join(configsPath, elem)).isDirectory() === true ) {
+                            this.directory(tmplPath, elem);
+                        } else {
+                            this.copy(tmplPath, elem);
+                        }
                     }
-                }
 
-            }, this);
+                }, this);
+            }
 
             cb();
 
@@ -136,7 +150,6 @@ Generator.prototype.copyFiles = function (arg) {
             // remove `doc` from `ignores`
             if ( props.includeDocs === true ) {
                 ignores.splice(ignores.indexOf('doc'), 1);
-
             }
 
             fetch(props.choice);
