@@ -78,8 +78,6 @@ var Generator = yeoman.generators.Base.extend({
 		};
 
 		if (this.server !== undefined) {
-			// There is no "pretty" built-in ability to break in `forEach, so
-			// use `some`: http://ecma-international.org/ecma-262/5.1/#sec-15.4.4.17
 			choices.some(function (elem) {
 				if (this.server === elem.value.server) {
 					this.promptResults.choice = elem.value;
