@@ -1,8 +1,6 @@
 'use strict';
-
 var fs = require('fs');
 var path = require('path');
-
 var yeoman = require('yeoman-generator');
 
 var choices = [{
@@ -43,7 +41,7 @@ var choices = [{
 	}
 }];
 
-var Generator = yeoman.generators.Base.extend({
+var Generator = module.exports = yeoman.generators.Base.extend({
 	constructor: function () {
 		yeoman.generators.Base.apply(this, arguments);
 
@@ -84,6 +82,7 @@ var Generator = yeoman.generators.Base.extend({
 					return true;
 				}
 			}.bind(this));
+
 			if (this.promptResults.choice) {
 				return done();
 			}
@@ -104,6 +103,7 @@ var Generator = yeoman.generators.Base.extend({
 			if (props.includeDocs === true) {
 				this.promptResults.ignores.splice(this.promptResults.ignores.indexOf('doc'), 1);
 			}
+
 			this.promptResults.choice = props.choice;
 
 			done();
@@ -114,10 +114,9 @@ var Generator = yeoman.generators.Base.extend({
 		//  extract props from prompting phase
 		var ignores = this.promptResults.ignores;
 		var configs = this.promptResults.choice;
-
 		var configsPath = path.join(this.sourceRoot(), configs.server);
-
 		var destPath = this.destinationRoot();
+
 		if (typeof this.options.destination === 'string') {
 			destPath = path.join(destPath, this.options.destination);
 		} else if (this.options.destination === true) {
@@ -129,7 +128,7 @@ var Generator = yeoman.generators.Base.extend({
 			ignores.push('package.json');
 		}
 
-		this.tarball(configs.url, configsPath, { strip: 1 }, function () {
+		this.tarball(configs.url, configsPath, {strip: 1}, function () {
 			if (configs.server === 'apache') {
 				this.copy(path.join(configsPath, 'dist', '.htaccess'), (destPath) ?
 					path.join(destPath, '.htaccess') : '.htaccess');
@@ -139,6 +138,7 @@ var Generator = yeoman.generators.Base.extend({
 					dot: true
 				}).forEach(function (elem) {
 					var tmplPath = path.join(configs.server, elem);
+
 					if (ignores.indexOf(elem) === -1) {
 						if (fs.lstatSync(path.join(configsPath, elem)).isDirectory() === true) {
 							this.directory(tmplPath, path.join(destPath, elem));
@@ -153,6 +153,4 @@ var Generator = yeoman.generators.Base.extend({
 	}
 });
 
-Generator.name = 'H5BP\'s Server Configs';
-
-module.exports = Generator;
+Generator.name = 'H5BP Server Configs';
