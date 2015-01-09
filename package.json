@@ -26,7 +26,7 @@
     "test": "mocha --timeout 50000"
   },
   "dependencies": {
-    "yeoman-generator": "~0.14.0"
+    "yeoman-generator": "^0.17.7"
   },
   "devDependencies": {
     "mocha": "~1.12.0"
