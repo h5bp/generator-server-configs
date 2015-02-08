@@ -152,5 +152,3 @@ var Generator = module.exports = yeoman.generators.Base.extend({
 		}.bind(this));
 	}
 });
-
-Generator.name = 'H5BP Server Configs';

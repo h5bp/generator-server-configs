@@ -25,8 +25,8 @@ describe('H5BP Server Configs generator', function () {
 		];
 
 		this.generator.server = 'apache';
-		this.generator.run({}, function () {
-			helpers.assertFiles(expected);
+		this.generator.run(function () {
+			helpers.assertFile(expected);
 			cb();
 		});
 	});
@@ -37,8 +37,8 @@ describe('H5BP Server Configs generator', function () {
 		];
 
 		this.generator.server = 'gae';
-		this.generator.run({}, function () {
-			helpers.assertFiles(expected);
+		this.generator.run(function () {
+			helpers.assertFile(expected);
 			cb();
 		});
 	});
@@ -50,8 +50,8 @@ describe('H5BP Server Configs generator', function () {
 		];
 
 		this.generator.server = 'iis';
-		this.generator.run({}, function () {
-			helpers.assertFiles(expected);
+		this.generator.run(function () {
+			helpers.assertFile(expected);
 			cb();
 		});
 	});
@@ -62,8 +62,8 @@ describe('H5BP Server Configs generator', function () {
 		];
 
 		this.generator.server = 'lighttpd';
-		this.generator.run({}, function () {
-			helpers.assertFiles(expected);
+		this.generator.run(function () {
+			helpers.assertFile(expected);
 			cb();
 		});
 	});
@@ -78,8 +78,8 @@ describe('H5BP Server Configs generator', function () {
 		];
 
 		this.generator.server = 'nginx';
-		this.generator.run({}, function () {
-			helpers.assertFiles(expected);
+		this.generator.run(function () {
+			helpers.assertFile(expected);
 			cb();
 		});
 	});
@@ -91,8 +91,8 @@ describe('H5BP Server Configs generator', function () {
 		];
 
 		this.generator.server = 'node';
-		this.generator.run({}, function () {
-			helpers.assertFiles(expected);
+		this.generator.run(function () {
+			helpers.assertFile(expected);
 			cb();
 		});
 	});
@@ -105,8 +105,8 @@ describe('H5BP Server Configs generator', function () {
 
 		this.generator.server = 'node';
 		this.generator.options.destination = true;
-		this.generator.run({}, function () {
-			helpers.assertFiles(expected);
+		this.generator.run(function () {
+			helpers.assertFile(expected);
 			cb();
 		});
 	});
@@ -119,8 +119,8 @@ describe('H5BP Server Configs generator', function () {
 
 		this.generator.server = 'node';
 		this.generator.options.destination = 'custom';
-		this.generator.run({}, function () {
-			helpers.assertFiles(expected);
+		this.generator.run(function () {
+			helpers.assertFile(expected);
 			cb();
 		});
 	});
