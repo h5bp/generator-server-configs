@@ -2,6 +2,7 @@
 var fs = require('fs');
 var path = require('path');
 var yeoman = require('yeoman-generator');
+var globby = require('globby');
 
 var choices = [{
 	name: 'Apache',
@@ -133,7 +134,7 @@ var Generator = module.exports = yeoman.generators.Base.extend({
 				this.copy(path.join(configsPath, 'dist', '.htaccess'), (destPath) ?
 					path.join(destPath, '.htaccess') : '.htaccess');
 			} else {
-				this.expand('*', {
+				globby.sync('*', {
 					cwd: configsPath,
 					dot: true
 				}).forEach(function (elem) {
@@ -148,6 +149,7 @@ var Generator = module.exports = yeoman.generators.Base.extend({
 					}
 				}, this);
 			}
+
 			done();
 		}.bind(this));
 	}
