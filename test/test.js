@@ -87,39 +87,12 @@ describe('H5BP Server Configs generator', function () {
 
 	it('`node` option generates expected files', function (cb) {
 		var expected = [
-			'lib',
+			'index.js',
 			'package.json'
 		];
 
 		this.generator.server = 'node';
-		this.generator.run(function () {
-			assert.file(expected);
-			cb();
-		});
-	});
-
-	it('`destination` flag generates files in default location', function (cb) {
-		var expected = [
-			'node/lib',
-			'node/package.json'
-		];
-
-		this.generator.server = 'node';
-		this.generator.options.destination = true;
-		this.generator.run(function () {
-			assert.file(expected);
-			cb();
-		});
-	});
-
-	it('`destination` flag generates files in custom location', function (cb) {
-		var expected = [
-			'custom/lib',
-			'custom/package.json'
-		];
-
-		this.generator.server = 'node';
-		this.generator.options.destination = 'custom';
+		this.generator.options['skip-install'] = true;
 		this.generator.run(function () {
 			assert.file(expected);
 			cb();
