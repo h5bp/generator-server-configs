@@ -1,3 +1,5 @@
 node_modules
 app/templates
+!app/templates/index.js
+!app/templates/_package.json
 test/temp

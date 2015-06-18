@@ -118,15 +118,24 @@ var Generator = module.exports = yeoman.generators.Base.extend({
 		var configsPath = path.join(this.sourceRoot(), configs.server);
 		var destPath = this.destinationRoot();
 
+		// node server config is fetched via npm
+		if (configs.server === 'node') {
+			this.copy('_package.json', 'package.json');
+			this.copy('index.js');
+
+			if (!this.options['skip-install']) {
+				this.installDependencies({bower: false});
+			}
+
+			done();
+
+			return;
+		}
+
 		if (typeof this.options.destination === 'string') {
 			destPath = path.join(destPath, this.options.destination);
 		} else if (this.options.destination === true) {
 			destPath = path.join(destPath, configs.server);
-		}
-
-		// Only the `node` server configs require the `package.json` file
-		if (configs.server !== 'node') {
-			ignores.push('package.json');
 		}
 
 		this.tarball(configs.url, configsPath, {strip: 1}, function () {
